@@ -1,37 +1,60 @@
-import "./style.css";
-
 import * as three from "https://unpkg.com/three/build/three.module.js";
 
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
-import { MeshStandardMaterial } from "three";
+import { OrbitControls } from "https://unpkg.com/three@0.127.0/examples/jsm/controls/OrbitControls.js";
 
 function init() {
-	const suntexture = new three.TextureLoader().load("./images/sun.jpg");
-	const suntexturenormal = new three.TextureLoader().load(
-		"./images/sun_normal.jpg"
+	const suntexture = new three.TextureLoader().load(
+		"https://i.ibb.co/bv9w0C7/sun.jpg"
 	);
-	const murcurytexture = new three.TextureLoader().load("./images/mercury.png");
+	const suntexturenormal = new three.TextureLoader().load(
+		"https://i.ibb.co/pRkJFx3/sun-normal.jpg"
+	);
+	const murcurytexture = new three.TextureLoader().load(
+		"https://i.ibb.co/Df8TQyn/mercury.png"
+	);
 	const murcurynormal = new three.TextureLoader().load(
-		"./images/murcury-normal.png"
+		"https://i.ibb.co/M8m8f2V/murcury-normal.png"
 	);
 
-	const venustexture = new three.TextureLoader().load("./images/venus.jpg");
+	const venustexture = new three.TextureLoader().load(
+		"https://i.ibb.co/zGMYtdP/venus.jpg"
+	);
 	const venusnormal = new three.TextureLoader().load(
-		"./images/venus-normal.png"
+		"https://i.ibb.co/M8m8f2V/murcury-normal.png"
 	);
-	const earthtexture = new three.TextureLoader().load("./images/earth.jpeg");
+	const earthtexture = new three.TextureLoader().load(
+		"https://i.ibb.co/Cw7jxNZ/earth.png"
+	);
 	const earthnormal = new three.TextureLoader().load(
-		"./images/earth-normal.png"
+		"https://i.ibb.co/0J69TBK/earth-normal.png"
 	);
-	const marstexture = new three.TextureLoader().load("./images/mars.jpg");
-	const marsnormal = new three.TextureLoader().load("./images/mars-normal.png");
-	const jeptexture = new three.TextureLoader().load("./images/jep.jpg");
-	const jepnormal = new three.TextureLoader().load("./images/jep-normal.png");
-	const sattexture = new three.TextureLoader().load("./images/sat.png");
-	const satnormal = new three.TextureLoader().load("./images/sat-normal.jpg");
-	const moontexture = new three.TextureLoader().load("./images/moon.jpg");
-	const moonnormal = new three.TextureLoader().load("./images/moon-normal.png");
-	const ringtexture = new three.TextureLoader().load("./images/ring.png");
+	const marstexture = new three.TextureLoader().load(
+		"https://i.ibb.co/r3LLzCW/mars.jpg"
+	);
+	const marsnormal = new three.TextureLoader().load(
+		"https://i.ibb.co/1Zstypd/mars-normal.png"
+	);
+	const jeptexture = new three.TextureLoader().load(
+		"https://i.ibb.co/M1RHX79/jep.jpg"
+	);
+	const jepnormal = new three.TextureLoader().load(
+		"https://i.ibb.co/M8m8f2V/murcury-normal.png"
+	);
+	const sattexture = new three.TextureLoader().load(
+		"https://i.ibb.co/NCwj33C/sat.png"
+	);
+	const satnormal = new three.TextureLoader().load(
+		"https://i.ibb.co/ZhPfHfj/sat-normal.jpg"
+	);
+	const moontexture = new three.TextureLoader().load(
+		"https://i.ibb.co/028sCqr/moon.jpg"
+	);
+	const moonnormal = new three.TextureLoader().load(
+		"https://i.ibb.co/0ZDz5TL/moon-normal.png"
+	);
+	const ringtexture = new three.TextureLoader().load(
+		"https://i.ibb.co/dc2hfhD/ring.png"
+	);
 
 	const secne = new three.Scene();
 
@@ -58,19 +81,19 @@ function init() {
 
 		const [x, y, z] = Array(3)
 			.fill()
-			.map(() => three.MathUtils.randFloatSpread(200));
+			.map(() => three.MathUtils.randFloatSpread(500));
 		stars.position.set(x, y, z);
 		secne.add(stars);
 	}
 
-	// Array(300).fill().forEach(addstart);
+	Array(300).fill().forEach(addstart);
 
 	renderer.render(secne, camera);
 	//sun
 
 	const sun = new three.Mesh(
 		new three.SphereGeometry(20, 32, 32),
-		new MeshStandardMaterial({
+		new three.MeshStandardMaterial({
 			emissive: 0xd14009,
 			map: suntexture,
 			normalMap: suntexturenormal,
@@ -81,7 +104,7 @@ function init() {
 
 	const venus = new three.Mesh(
 		new three.SphereGeometry(0.9, 32, 32),
-		new MeshStandardMaterial({
+		new three.MeshStandardMaterial({
 			map: venustexture,
 			normalMap: venusnormal,
 		})
@@ -92,7 +115,7 @@ function init() {
 
 	const earth = new three.Mesh(
 		new three.SphereGeometry(1, 32, 32),
-		new MeshStandardMaterial({
+		new three.MeshStandardMaterial({
 			map: earthtexture,
 			normalMap: earthnormal,
 		})
@@ -103,7 +126,7 @@ function init() {
 
 	const mars = new three.Mesh(
 		new three.SphereGeometry(1, 32, 32),
-		new MeshStandardMaterial({
+		new three.MeshStandardMaterial({
 			map: marstexture,
 			normalMap: marsnormal,
 		})
@@ -116,7 +139,7 @@ function init() {
 
 	const jep = new three.Mesh(
 		new three.SphereGeometry(3, 32, 32),
-		new MeshStandardMaterial({
+		new three.MeshStandardMaterial({
 			map: jeptexture,
 			normalMap: jepnormal,
 		})
@@ -128,7 +151,7 @@ function init() {
 
 	const saturn = new three.Mesh(
 		new three.SphereGeometry(2.8, 32, 32),
-		new MeshStandardMaterial({
+		new three.MeshStandardMaterial({
 			map: sattexture,
 			normalMap: satnormal,
 		})
@@ -136,7 +159,7 @@ function init() {
 
 	const ring = new three.Mesh(
 		new three.TorusGeometry(4.5, 1, 2, 200),
-		new MeshStandardMaterial({
+		new three.MeshStandardMaterial({
 			map: ringtexture,
 		})
 	);
@@ -148,14 +171,14 @@ function init() {
 	ring.position.set(0, 0, 50);
 	const murcury = new three.Mesh(
 		new three.SphereGeometry(0.3, 32, 32),
-		new MeshStandardMaterial({
+		new three.MeshStandardMaterial({
 			map: murcurytexture,
 			normalMap: murcurynormal,
 		})
 	);
 	const moon = new three.Mesh(
 		new three.SphereGeometry(0.3, 32, 32),
-		new MeshStandardMaterial({
+		new three.MeshStandardMaterial({
 			map: moontexture,
 			normalMap: moonnormal,
 		})
